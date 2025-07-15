@@ -74,10 +74,7 @@ export default function AnimatedCheckbox({
   ...props
 }: Props) {
   const prevIcon = useRef<CheckboxIcon>(renderIcon)
-  const direction = useRef<{ exit: string; initial: string }>({
-    exit: "hiddenBottom",
-    initial: "hiddenTop",
-  })
+  const direction = useRef<"down" | "up">("up")
 
   const [renderIconDelayed, setRenderIconDelayed] = useState(renderIcon)
 
@@ -91,21 +88,24 @@ export default function AnimatedCheckbox({
     prevIcon.current = renderIcon
 
     if (newIcon === "checkbox" && oldIcon === "check") {
-      direction.current = {
-        exit: "hiddenTop",
-        initial: "hiddenBottom",
-      }
+      direction.current = "down"
       return
     }
     if (newIcon === "check" && oldIcon === "checkbox") {
-      direction.current = {
-        exit: "hiddenBottom",
-        initial: "hiddenTop",
-      }
+      direction.current = "up"
       return
     }
 
-    return direction.current
+    if (newIcon === "close" && oldIcon === "check") {
+      direction.current = "up"
+      return
+    }
+    if (newIcon === "check" && oldIcon === "close") {
+      direction.current = "down"
+      return
+    }
+
+    return "up"
   }
 
   updateDirection()
@@ -113,16 +113,16 @@ export default function AnimatedCheckbox({
   const iconProps = {
     className: "absolute top-0 left-0 size-4",
     variants: variants,
-    initial: direction.current.initial,
+    initial: direction.current === "up" ? "hiddenBottom" : "hiddenTop",
     animate: "visible",
-    exit: direction.current.exit,
+    exit: direction.current === "up" ? "hiddenTop" : "hiddenBottom",
   }
 
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative size-4 shrink-0 rounded-[4px] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        "peer focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative size-4 shrink-0 overflow-hidden rounded-[4px] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}
