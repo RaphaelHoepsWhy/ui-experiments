@@ -8,7 +8,7 @@ import CheckboxIcon from "@/components/icons/CheckboxIcon"
 import CheckIcon from "@/components/icons/CheckIcon"
 import CloseIcon from "@/components/icons/CloseIcon"
 import { AnimatePresence } from "motion/react"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const distance = 15
 const duration = 0.3
@@ -79,6 +79,12 @@ export default function AnimatedCheckbox({
     initial: "hiddenTop",
   })
 
+  const [renderIconDelayed, setRenderIconDelayed] = useState(renderIcon)
+
+  useEffect(() => {
+    setRenderIconDelayed(renderIcon)
+  }, [renderIcon])
+
   function updateDirection() {
     const oldIcon = prevIcon.current
     const newIcon = renderIcon
@@ -104,8 +110,6 @@ export default function AnimatedCheckbox({
 
   updateDirection()
 
-  console.log(direction.current)
-
   const iconProps = {
     className: "absolute top-0 left-0 size-4",
     variants: variants,
@@ -124,11 +128,15 @@ export default function AnimatedCheckbox({
       {...props}
     >
       <AnimatePresence>
-        {renderIcon === "checkbox" && (
+        {renderIconDelayed === "checkbox" && (
           <CheckboxIcon key="checkbox" {...iconProps} />
         )}
-        {renderIcon === "check" && <CheckIcon key="check" {...iconProps} />}
-        {renderIcon === "close" && <CloseIcon key="close" {...iconProps} />}
+        {renderIconDelayed === "check" && (
+          <CheckIcon key="check" {...iconProps} />
+        )}
+        {renderIconDelayed === "close" && (
+          <CloseIcon key="close" {...iconProps} />
+        )}
       </AnimatePresence>
     </CheckboxPrimitive.Root>
   )
