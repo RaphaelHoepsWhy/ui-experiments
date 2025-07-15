@@ -8,6 +8,7 @@ import CheckboxIcon from "@/components/icons/CheckboxIcon"
 import CheckIcon from "@/components/icons/CheckIcon"
 import CloseIcon from "@/components/icons/CloseIcon"
 import { AnimatePresence } from "motion/react"
+import { useRef } from "react"
 
 const distance = 15
 const duration = 0.3
@@ -50,6 +51,8 @@ const variants = {
   },
 }
 
+type CheckboxIcon = "checkbox" | "check" | "close"
+
 interface Props extends React.ComponentProps<typeof CheckboxPrimitive.Root> {
   renderIcon: "checkbox" | "check" | "close"
   className: string
@@ -60,46 +63,56 @@ export default function AnimatedCheckbox({
   renderIcon,
   ...props
 }: Props) {
+  const prevIcon = useRef<CheckboxIcon>(renderIcon)
+
+  function getDirection() {
+    const oldIcon = prevIcon.current
+    const newIcon = renderIcon
+    prevIcon.current = renderIcon
+
+    if (newIcon === "checkbox" && oldIcon === "check") {
+      return {
+        exit: "hiddenTop",
+        intial: "hiddenBottom",
+      }
+    }
+    if (newIcon === "check" && oldIcon === "checkbox") {
+      return {
+        exit: "hiddenBottom",
+        initial: "hiddenTop",
+      }
+    }
+
+    return {
+      exit: "hiddenTop",
+      intial: "hiddenBottom",
+    }
+  }
+
+  const direction = getDirection()
+  const iconProps = {
+    className: "absolute top-0 left-0 size-4",
+    variants: variants,
+    initial: direction.initial,
+    animate: "visible",
+    exit: direction.exit,
+  }
+
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative size-4 shrink-0 overflow-hidden rounded-[4px] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        "peer focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative size-4 shrink-0 rounded-[4px] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}
     >
       <AnimatePresence>
         {renderIcon === "checkbox" && (
-          <CheckboxIcon
-            key="checkbox"
-            className="absolute top-0 left-0 size-4"
-            variants={variants}
-            initial={"hiddenBottom"}
-            animate={"visible"}
-            exit={"hiddenTop"}
-          />
+          <CheckboxIcon key="checkbox" {...iconProps} />
         )}
-        {renderIcon === "check" && (
-          <CheckIcon
-            key="check"
-            className="absolute top-0 left-0 size-4"
-            variants={variants}
-            initial={"hiddenBottom"}
-            animate={"visible"}
-            exit={"hiddenTop"}
-          />
-        )}
-        {renderIcon === "close" && (
-          <CloseIcon
-            key="close"
-            className="absolute top-0 left-0 size-4"
-            variants={variants}
-            initial={"hiddenBottom"}
-            animate={"visible"}
-            exit={"hiddenTop"}
-          />
-        )}
+        {renderIcon === "check" && <CheckIcon key="check" {...iconProps} />}
+        {renderIcon === "close" && <CloseIcon key="close" {...iconProps} />}
       </AnimatePresence>
     </CheckboxPrimitive.Root>
   )
