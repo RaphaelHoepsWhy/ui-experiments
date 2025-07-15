@@ -19,6 +19,16 @@ const variants = {
   hiddenBottom: {
     y: distance,
     opacity: 0,
+    transition: {
+      y: {
+        duration: duration,
+        ease: "easeInOut",
+      },
+      opacity: {
+        duration: opacityDuration,
+        ease: "easeInOut",
+      },
+    },
   },
   visible: {
     y: 0,
@@ -64,38 +74,44 @@ export default function AnimatedCheckbox({
   ...props
 }: Props) {
   const prevIcon = useRef<CheckboxIcon>(renderIcon)
+  const direction = useRef<{ exit: string; initial: string }>({
+    exit: "hiddenBottom",
+    initial: "hiddenTop",
+  })
 
-  function getDirection() {
+  function updateDirection() {
     const oldIcon = prevIcon.current
     const newIcon = renderIcon
     prevIcon.current = renderIcon
 
     if (newIcon === "checkbox" && oldIcon === "check") {
-      return {
+      direction.current = {
         exit: "hiddenTop",
-        intial: "hiddenBottom",
+        initial: "hiddenBottom",
       }
+      return
     }
     if (newIcon === "check" && oldIcon === "checkbox") {
-      return {
+      direction.current = {
         exit: "hiddenBottom",
         initial: "hiddenTop",
       }
+      return
     }
 
-    return {
-      exit: "hiddenTop",
-      intial: "hiddenBottom",
-    }
+    return direction.current
   }
 
-  const direction = getDirection()
+  updateDirection()
+
+  console.log(direction.current)
+
   const iconProps = {
     className: "absolute top-0 left-0 size-4",
     variants: variants,
-    initial: direction.initial,
+    initial: direction.current.initial,
     animate: "visible",
-    exit: direction.exit,
+    exit: direction.current.exit,
   }
 
   return (
