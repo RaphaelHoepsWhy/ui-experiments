@@ -1,6 +1,5 @@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-import Image from "next/image"
 
 export default function Home() {
   return (
