@@ -39,7 +39,7 @@ export default function CheckboxWithLabel({}: Props) {
 
   return (
     <div
-      className="flex items-center gap-2"
+      className="flex items-center gap-2 transition-colors hover:text-blue-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => handleMouseLeave()}
     >
