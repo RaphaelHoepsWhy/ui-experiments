@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils"
 import React, { Fragment, ReactNode } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
+import { Pagination } from "swiper/modules"
+import "swiper/css/pagination"
 
 type Props = {
   className?: string
@@ -30,12 +32,14 @@ export default function RowOrSlider({
         ))}
       </div>
 
-      <div className={cn("lg:hidden", className)}>
+      <div className={cn("pb-20 lg:hidden", className)}>
         <Swiper
           slidesPerView={"auto"}
           spaceBetween={16}
           slidesOffsetBefore={16}
           slidesOffsetAfter={16}
+          modules={[Pagination]}
+          pagination={{ type: "progressbar" }}
         >
           {items.map((item, index) => (
             <SwiperSlide key={index} style={{ width: itemSliderWidth }}>

@@ -6,10 +6,10 @@ import RowOrSlider from "@/app/grid/components/RowOrSlider/RowOrSlider"
 export default function Home() {
   return (
     <>
-      <SectionHeadline>First Section</SectionHeadline>
+      <SectionHeadline>Row / Slider</SectionHeadline>
 
       <RowOrSlider
-        className="pb-4 lg:pb-8"
+        className="pb-12 lg:pb-24"
         items={[
           <Box className="text-lg" key={1}>
             <div className="pb-1 text-sm">First</div>
@@ -27,8 +27,8 @@ export default function Home() {
       />
 
       <RowOrSlider
-        className="pb-4 lg:pb-8"
-        itemSliderWidth="210px"
+        className="pb-24 lg:pb-24"
+        itemSliderWidth="240px"
         items={[
           <Box className="text-lg" key={1} gradient={"sunset"}>
             <div className="pb-1 text-sm">First</div>

@@ -144,3 +144,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+.swiper {
+  /* overflow-y: visible !important; */
+  padding-bottom: 24px !important;
+}
+
+.swiper-pagination {
+  /* bottom: -20px !important; */
+  top: unset !important;
+  bottom: 0px;
+  left: 16px !important;
+  width: 50% !important;
+  background-color: #262626 !important;
+}
+
+.swiper-pagination-progressbar-fill {
+  color: #1d4ed0 !important;
+}
