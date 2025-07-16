@@ -7,9 +7,14 @@ import { Swiper, SwiperSlide } from "swiper/react"
 type Props = {
   className?: string
   items: ReactNode[]
+  itemSliderWidth?: string
 }
 
-export default function RowOrSlider({ items, className }: Props) {
+export default function RowOrSlider({
+  items,
+  className,
+  itemSliderWidth = "320px",
+}: Props) {
   return (
     <>
       <div
@@ -33,7 +38,7 @@ export default function RowOrSlider({ items, className }: Props) {
           slidesOffsetAfter={16}
         >
           {items.map((item, index) => (
-            <SwiperSlide key={index} style={{ width: "380px" }}>
+            <SwiperSlide key={index} style={{ width: itemSliderWidth }}>
               {item}
             </SwiperSlide>
           ))}

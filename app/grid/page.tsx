@@ -25,6 +25,29 @@ export default function Home() {
           </Box>,
         ]}
       />
+
+      <RowOrSlider
+        className="pb-4 lg:pb-8"
+        itemSliderWidth="210px"
+        items={[
+          <Box className="text-lg" key={1} gradient={"sunset"}>
+            <div className="pb-1 text-sm">First</div>
+            <div className="text-lg">Lorem Ipsum</div>
+          </Box>,
+          <Box className="text-lg" key={2} gradient={"sunset"}>
+            <div className="pb-1 text-sm">Second</div>
+            <div className="text-lg">Dolor Sit</div>
+          </Box>,
+          <Box className="text-lg" key={3} gradient={"sunset"}>
+            <div className="pb-1 text-sm">Third</div>
+            <div className="text-lg">Amet Consetetur</div>
+          </Box>,
+          <Box className="text-lg" key={4} gradient={"sunset"}>
+            <div className="pb-1 text-sm">Fourth</div>
+            <div className="text-lg">Lorem Ipsum</div>
+          </Box>,
+        ]}
+      />
     </>
   )
 }
