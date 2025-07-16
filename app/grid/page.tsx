@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <div className="px-4 lg:px-8">
-        <PageHeadline>Scaling Headline</PageHeadline>
+        <PageHeadline>Layout Experiments</PageHeadline>
         <SectionHeadline>Paragraph</SectionHeadline>
 
         <p className="max-w-[800px] pb-8 lg:pb-16">
@@ -48,22 +48,22 @@ export default function Home() {
       />
 
       <RowOrSlider
-        className="pb-24 lg:pb-24"
+        className="pb-12"
         itemSliderWidth="240px"
         items={[
-          <Box className="text-lg" key={1} gradient={"sunset"}>
+          <Box className="aspect-square text-lg" key={1} gradient={"sunset"}>
             <div className="pb-1 text-sm">First</div>
             <div className="text-lg">Lorem Ipsum</div>
           </Box>,
-          <Box className="text-lg" key={2} gradient={"sunset"}>
+          <Box className="aspect-square text-lg" key={2} gradient={"sunset"}>
             <div className="pb-1 text-sm">Second</div>
             <div className="text-lg">Dolor Sit</div>
           </Box>,
-          <Box className="text-lg" key={3} gradient={"sunset"}>
+          <Box className="aspect-square text-lg" key={3} gradient={"sunset"}>
             <div className="pb-1 text-sm">Third</div>
             <div className="text-lg">Amet Consetetur</div>
           </Box>,
-          <Box className="text-lg" key={4} gradient={"sunset"}>
+          <Box className="aspect-square text-lg" key={4} gradient={"sunset"}>
             <div className="pb-1 text-sm">Fourth</div>
             <div className="text-lg">Lorem Ipsum</div>
           </Box>,
@@ -72,7 +72,7 @@ export default function Home() {
 
       <RowOrSlider
         className="pb-24 lg:pb-24"
-        itemSliderWidth="240px"
+        itemSliderWidth="260px"
         forceSlider={true}
         items={[
           <Box className="text-lg" key={1} gradient={"ocean"}>
