@@ -11,7 +11,7 @@ export default function Box({ children, className }: Props) {
     <div
       className={cn(
         "relative flex items-end rounded bg-gradient-to-bl from-indigo-500 via-purple-500 to-pink-500 p-8",
-        "after:absolute after:inset-x-0 after:bottom-0 after:h-1/2 after:rounded-b after:bg-gradient-to-t after:from-black/60 after:to-transparent",
+        "aspect-high after:absolute after:inset-x-0 after:bottom-0 after:h-1/2 after:rounded-b after:bg-gradient-to-t after:from-black/60 after:to-transparent",
         className,
       )}
     >

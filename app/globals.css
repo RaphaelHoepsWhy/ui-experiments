@@ -41,7 +41,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --aspect-wide: 2.25;
+  --aspect-high: 0.618;
 
   --text-sm: clamp(0.875rem, 0.84rem + 0.13vw, 1rem);
 
