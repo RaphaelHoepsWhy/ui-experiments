@@ -105,6 +105,11 @@ export default function AnimatedCheckbox({
       return
     }
 
+    if (newIcon === "checkbox" && oldIcon === "close") {
+      direction.current = "down"
+      return
+    }
+
     return "up"
   }
 
@@ -127,7 +132,7 @@ export default function AnimatedCheckbox({
       )}
       {...props}
     >
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {renderIconDelayed === "checkbox" && (
           <CheckboxIcon key="checkbox" {...iconProps} />
         )}
