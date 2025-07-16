@@ -57,7 +57,7 @@
   --text-lg--line-height: 1.2;
 
   /* minor headline ("Unsere Mission") */
-  --text-xl: clamp(1.625rem, 1.52rem + 0.45vw, 2.0625rem);
+  --text-xl: clamp(1.5rem, 1.5rem + 0.45vw, 2rem);
   --text-xl--letter-spacing: -0.01em;
   --text-xl--font-weight: 700;
 
@@ -65,6 +65,11 @@
   --text-2xl: clamp(2.0625rem, 1.93rem + 0.58vw, 2.625rem);
   --text-2xl--line-height: 1.2;
   --text-2xl--font-weight: 700;
+
+  /* page headline */
+  --text-4xl: clamp(4rem, 4rem + 1.5vw, 10rem);
+  /* --text-4xl--letter-spacing: 0.02em; */
+  --text-4xl--font-weight: 700;
 }
 
 :root {
@@ -157,6 +162,12 @@
   left: 16px !important;
   width: 50% !important;
   background-color: #262626 !important;
+}
+
+@media (min-width: 1024px) {
+  .swiper-pagination {
+    left: 32px !important;
+  }
 }
 
 .swiper-pagination-progressbar-fill {
