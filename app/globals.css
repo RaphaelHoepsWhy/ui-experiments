@@ -41,6 +41,30 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --aspect-wide: 2.25;
+
+  --text-sm: clamp(0.875rem, 0.84rem + 0.13vw, 1rem);
+
+  /* body */
+  --text-base: clamp(1rem, 0.94rem + 0.26vw, 1.25rem);
+  --text-base--line-height: 1.5;
+  --text-2xl--font-weight: 400;
+  --text-2xl--line-height: 1.5;
+
+  /* CTA */
+  --text-lg: clamp(1.25rem, 1.16rem + 0.39vw, 1.625rem);
+  --text-lg--font-weight: 700;
+  --text-lg--line-height: 1.2;
+
+  /* minor headline ("Unsere Mission") */
+  --text-xl: clamp(1.625rem, 1.52rem + 0.45vw, 2.0625rem);
+  --text-xl--letter-spacing: -0.01em;
+  --text-xl--font-weight: 700;
+
+  /* headline ("Jetzt anmelden") */
+  --text-2xl: clamp(2.0625rem, 1.93rem + 0.58vw, 2.625rem);
+  --text-2xl--line-height: 1.2;
+  --text-2xl--font-weight: 700;
 }
 
 :root {
