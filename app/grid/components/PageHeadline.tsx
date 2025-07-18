@@ -6,5 +6,5 @@ type Props = {
 }
 
 export default function PageHeadline({ children }: Props) {
-  return <h2 className="py-8 text-4xl lg:py-16">{children}</h2>
+  return <h2 className="py-8 text-4xl break-words lg:py-16">{children}</h2>
 }
