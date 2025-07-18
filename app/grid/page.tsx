@@ -12,17 +12,19 @@ export default function Home() {
         <SectionHeadline>Paragraph</SectionHeadline>
 
         <p className="max-w-[800px] pb-8 lg:pb-16">
-          This Paragraph contains body text that also scales. But only minimal.
-          This text is intended to be easy to read to the user, so the
-          font-sizes is determined by the distance of their eyes from the
-          screen, not the overall available space on their screen.
+          This Paragraph contains body text that also scales in a minimal way.
+          This text is intended to be easy to read for the user, so the
+          font-size is mostly determined by the distance of their eyes from the
+          screen, not the overall available space on their screen. We only add
+          some minimal scaling for visual layout consistency.
         </p>
 
         <div className="grid grid-cols-3 gap-4 lg:gap-6">
           <p className="col-start-1 -col-end-1 max-w-[800px] pb-8 lg:col-start-2 lg:pb-16">
-            A paragraph like this could also align on another grid line. But it
-            always has a max-width of 800px. Since it is ment to be read as easy
-            as possible we avoid too long lines here that the eye cannot follow.
+            A paragraph like this could also start on another grid line. But it
+            always has a max-width of 800px. Since it is ment to be readable as
+            easy as possible we avoid too long lines here that the eye cannot
+            follow.
           </p>
         </div>
 
